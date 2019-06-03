@@ -6,13 +6,16 @@ from django.utils import timezone
 
 # Create your models here.
 class Auto(models.Model):
-    question_text = models.CharField(max_length=200)
+    title_text = models.CharField(max_length=200)
+    comment_text = models.CharField(max_length=400)
     pub_date = models.DateTimeField('date published')
 
 class ReleasePage(models.Model):
-    question_text = models.CharField(max_length=200)
+    title_text = models.CharField(max_length=200)
+    comment_text = models.CharField(max_length=400)
     pub_date = models.DateTimeField('date published')
 
 class BugPage(models.Model):
-    question_text = models.CharField(max_length=200)
+    title_text = models.CharField(max_length=200)
+    comment_text = models.CharField(max_length=400)
     pub_date = models.DateTimeField('date published')
