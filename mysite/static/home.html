@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{% block title %}T|Vision{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'frontend/style.css' %}">
+</head>
+
+<body>
+  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+    <div class="container-fluid sidebar">
+        {% block sidebar %}
+        <!--<ul>
+            <li><a href="/">Auto</a></li>
+            <li><a href="/">Release</a></li>
+            <li><a href="/">Bug</a></li>
+        </ul>-->
+        <p> hello world </p>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

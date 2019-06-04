@@ -5,9 +5,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from tvision.models import Auto, ReleasePage, BugPage
 
+from django.views.generic import TemplateView
+
 # Create your views here.
 
-def index(request):
+def home(request):
     """View function for home page of site"""
 
     #Generating counts of the main objects
@@ -21,4 +23,7 @@ def index(request):
         'num_bug' : num_bug,
     }
 
-    return render(request, 'views.html', context)
+    return render(request, '/static/home.html')
+
+class HomeView(TemplateView):
+    template_name = 'home.html'

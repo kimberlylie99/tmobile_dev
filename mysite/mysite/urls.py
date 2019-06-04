@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #url(r'^$', views.HomeView.as_view(), name='home'),
     url('tvision/', include('tvision.urls')),
-    url('^admin/', include(admin.site.urls)),
+    #url('^admin/', include(admin.site.urls)),
 ]
