@@ -1,27 +1,91 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+{% load static from staticfiles%}
+<!--<!DOCTYPE html>-->
 
 <html lang="en">
+
 <head>
     <title>{% block title %}T|Vision{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'frontend/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'animation.js' %}"></script>
 </head>
 
 <body>
-  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
-    <div class="container-fluid sidebar">
-        {% block sidebar %}
-        <!--<ul>
-            <li><a href="/">Auto</a></li>
-            <li><a href="/">Release</a></li>
-            <li><a href="/">Bug</a></li>
-        </ul>-->
-        <p> hello world </p>
-        {% endblock %}
+    <!-- title -->
+    <div class="title">
+        <h1>T|Vision</h1>
     </div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
+    <!-- user input in order to display -->
+    <div class="home_text">
+        <p class="display">Display:</p>
+        <p class="date_range">Date Range:</p>
+        <button class="homeSubmit">Submit</button>
     </div>
+
+    <!-- dropdown menu to select what to display -->
+    <div class="display_choices">
+      <!--<button onclick="myFunction()" class="dropbtn">Choose Display</button>-->
+      <!--<form action="/action_page.php">-->
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <!--
+      <div id="displayDropdown" class="dropdown-content">
+        <a href="#auto">Auto</a>
+        <a href="#release">Releases</a>
+        <a href="#bug">Bugs</a>
+        <a href="#all">All</a>
+      </div>-->
+  </div>
+
+  <!-- what date(s) to display -->
+  <div id="date" class="date">
+      <input type="date" id="startDate" class="startDate" value="mm/dd/yyyy">
+      <p class="range_word">to</p>
+      <input type="date" id="endDate" class="endDate" value="mm/dd/yyyy">
+  </div>
+
+  <!-- display "auto" updates -->
+  <div class="auto_updates">
+  </div>
+
+  <!-- display "release" updates -->
+
+  <!-- JS code to move -->
+  <script>
+
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("displayDropdown").classList.toggle("show");
+    document.getElementById("date").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("displayDropdown");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  </script>
+
+
 </body>
+
 </html>

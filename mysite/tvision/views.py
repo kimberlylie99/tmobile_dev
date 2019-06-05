@@ -23,7 +23,7 @@ def home(request):
         'num_bug' : num_bug,
     }
 
-    return render(request, '/static/home.html')
+    return render(request, '/mysite/static/home.html')
 
 class HomeView(TemplateView):
     template_name = 'home.html'

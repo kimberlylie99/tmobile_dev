@@ -10,3 +10,6 @@ from .models import BugPage
 admin.site.register(Auto)
 admin.site.register(ReleasePage)
 admin.site.register(BugPage)
+
+# username: admin
+# password: adminadmin
