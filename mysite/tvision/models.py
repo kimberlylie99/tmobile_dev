@@ -5,9 +5,9 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-class Auto(models.Model):
-    title_text = models.CharField(max_length=200)
-    comment_text = models.CharField(max_length=400)
+class AutoPage(models.Model):
+    title_text = models.CharField(max_length=1000)
+    comment_text = models.CharField(max_length=1000)
     pub_date = models.DateTimeField('date published')
 
 class ReleasePage(models.Model):

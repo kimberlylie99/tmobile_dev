@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 
 from django.shortcuts import render
-from tvision.models import Auto, ReleasePage, BugPage
+from tvision.models import AutoPage, ReleasePage, BugPage
 
 from django.views.generic import TemplateView
 
