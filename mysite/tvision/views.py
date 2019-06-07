@@ -18,31 +18,11 @@ def home(request):
     num_bug = BugPage.objects.all().count()
 
     context = {
-        'num_auto' : num_auto,
-        'num_release' : num_release,
-        'num_bug' : num_bug,
+        'auto' : num_auto,
+        'release' : num_release,
+        'bugs' : num_bug,
     }
-
     return render(request, '/mysite/static/home.html')
-
-def display(request):
-    """View function for home page of site"""
-
-    #Generating counts of the main objects
-    num_auto = Auto.objects.all().count()
-    num_release = ReleasePage.objects.all().count()
-    num_bug = BugPage.objects.all().count()
-
-    context = {
-        'num_auto' : num_auto,
-        'num_release' : num_release,
-        'num_bug' : num_bug,
-    }
-
-    return render(request, '/mysite/static/display.html')
 
 class HomeView(TemplateView):
     template_name = 'home.html'
-
-class DisplayView(TemplateView):
-    template_name = 'display.html'

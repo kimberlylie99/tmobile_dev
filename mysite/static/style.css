@@ -6,16 +6,6 @@ h1.title {
   background-color: rgb(255,0,255);
 }
 
-h1.autoSection {
-  position: relative;
-  color: rgb(255,255,255);
-  font-size: 100px;
-  font-variant: small-caps;
-  text-align: center;
-  background-color: rgb(255,0,255);
-  top: 1000px;
-}
-
 p.display {
   font-size: 20px;
   position: absolute;
@@ -26,59 +16,16 @@ p.display {
 p.date_range {
   font-size: 20px;
   position: absolute;
-  top: 300px;
-  left: 600px;
+  top: 100px;
+  left: 900px;
 }
 
 p.range_word {
   font-size: 20px;
   position: absolute;
-  top: 330px;
-  left: 770px;
+  top: 50px;
+  left: 900px;
 }
-
-/* buttons */
-  input.auto_choice {
-    display: block;
-    position: absolute;
-    top: 220px;
-    left: 710px;
-  }
-
-  input.release_choice {
-    display: block;
-    position: absolute;
-    top: 245px;
-    left: 710px;
-  }
-
-  input.bugs_choice {
-    display: block;
-    position: absolute;
-    top: 270px;
-    left: 710px;
-  }
-
-  p.autoText {
-    font-size: 20px;
-    position: absolute;
-    top: 200px;
-    left: 750px;
-  }
-
-  p.releaseText {
-    font-size: 20px;
-    position: absolute;
-    top: 225px;
-    left: 750px;
-  }
-
-  p.bugsText {
-    font-size: 20px;
-    position: absolute;
-    top: 250px;
-    left: 750px;
-  }
 
 /* submit to diplay */
 .homeSubmit {

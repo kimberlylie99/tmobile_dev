@@ -22,7 +22,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('tvision/', include('tvision.urls')),
-    url('display/', include('display.urls')),
 ] + static(settings.ROOT_URLCONF, document_root=settings.BASE_DIR)
 
 urlpatterns += staticfiles_urlpatterns()

@@ -5,7 +5,6 @@ from . import views
 
 urlpatterns = [
     url('', TemplateView.as_view(template_name='home.html')),
-    url('display', TemplateView.as_view(template_name='display.html')),
 ]
     #url('', views.home, name='home'),
     #url('', TemplateView.as_view(template_name='home.html')),

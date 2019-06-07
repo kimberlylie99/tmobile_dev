@@ -2,6 +2,16 @@
 <!--<!DOCTYPE html>-->
 
 <html lang="en">
+<style>
+
+p.date_range {
+  font-size: 20px;
+  position: absolute;
+  top: 100px;
+  left: 900px;
+}
+
+</style>
 
 <head>
   <title>{% block title %}T|Vision{% endblock %}</title>
@@ -17,12 +27,11 @@
 
   <!-- user input in order to display -->
   <div class="home_text">
-      <p class="display">Display:</p>
-      <p class="date_range">Date Range:</p>
+      <p class="date_range">Dates:</p>
       <button class="homeSubmit" onclick="changePage()">Submit</button>
   </div>
 
-  <!-- dropdown menu to select what to display -->
+  <!-- dropdown menu to select what to display --> <!--
   <div class="display_choices">
     <input type="checkbox" id="auto_choice" class="auto_choice">
     <input type="checkbox" id="release_choice" class="release_choice">
@@ -31,7 +40,7 @@
     <p id="releaseText" class="releaseText">RELEASE</p>
     <p id="bugsText" class="bugsText">BUGS</p>
     <a href>
-  </div>
+  </div> -->
 
   <!-- what date(s) to display -->
   <div id="date" class="date">
@@ -41,9 +50,10 @@
   </div>
 
   <!-- auto section -->
+  <!--
   <div id="autoSection">
     <h1 class="autoSection">Auto Update</h1>
-  </div>
+  </div> -->
 
 <!-- JS file that needs to also be fixed -->
 <script>
@@ -55,9 +65,10 @@ var bugsBox = document.getElementById("bugs_choice");
 var startDate = document.getElementById("startDate");
 var endDate = document.getElementById("endDate");
 
+
 function changePage() {
   if (autoBox.checked == true) {
-    window.open('localhost:8000/tvision/display');
+    window.open('display.html');
   }
 }
 
@@ -65,6 +76,7 @@ function pageScroll() {
     window.scrollBy(0,1);
     scrolldelay = setTimeout(pageScroll,10);
 }
+
 </script>
 
 </body>
