@@ -1,0 +1,67 @@
+{% load static from staticfiles%}
+<!--<!DOCTYPE html>-->
+
+<html lang="en">
+
+<head>
+  <title>{% block title %}T|Vision{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script src="{% static 'animation.js' %}"></script>
+</head>
+
+<body>
+  <!-- title -->
+  <div class="title">
+      <h1>T|Vision</h1>
+  </div>
+
+  <!-- user input in order to display -->
+  <div class="home_text">
+      <p class="display">Display:</p>
+      <p class="date_range">Date Range:</p>
+      <button class="homeSubmit" onclick="changePage()">Submit</button>
+  </div>
+
+  <!-- dropdown menu to select what to display -->
+  <div class="display_choices">
+    <input type="checkbox" id="auto_choice" class="auto_choice">
+    <input type="checkbox" id="release_choice" class="release_choice">
+    <input type="checkbox" id="bugs_choice" class="bugs_choice">
+    <p id="autoText" class="autoText">AUTO</p>
+    <p id="releaseText" class="releaseText">RELEASE</p>
+    <p id="bugsText" class="bugsText">BUGS</p>
+    <a href>
+  </div>
+
+  <!-- what date(s) to display -->
+  <div id="date" class="date">
+      <input type="date" id="startDate" class="startDate" value="mm/dd/yyyy">
+      <p class="range_word">to</p>
+      <input type="date" id="endDate" class="endDate" value="mm/dd/yyyy">
+  </div>
+
+<!-- JS file that needs to also be fixed -->
+<script>
+// Get the checkbox
+var autoBox = document.getElementById("auto_choice");
+var releaseBox = document.getElementById("release_choice");
+var bugsBox = document.getElementById("bugs_choice");
+
+var startDate = document.getElementById("startDate");
+var endDate = document.getElementById("endDate");
+
+function changePage() {
+  if (autoBox.checked == true) {
+    window.open('localhost:8000/tvision/display');
+  }
+}
+
+function pageScroll() {
+    window.scrollBy(0,1);
+    scrolldelay = setTimeout(pageScroll,10);
+}
+</script>
+
+</body>
+
+</html>
