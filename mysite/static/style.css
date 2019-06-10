@@ -4,6 +4,7 @@ h1.autoText {
   font-variant: small-caps;
   text-align: center;
   background-color: rgb(255,0,255);
+  position: relative;
 }
 
 h1.releaseText {
@@ -24,6 +25,24 @@ h1.bugText {
   background-color: rgb(255,0,255);
   position: relative;
   top: 1000px;
+}
+
+p.small_title_auto {
+  font-size: 75px;
+  position: absolute;
+  top: 100px;
+}
+
+p.small_title_release {
+  font-size: 75px;
+  position: absolute;
+  top: 100px;
+}
+
+p.small_title_bugs {
+  font-size: 75px;
+  position: absolute;
+  top: 100px;
 }
 
 p.display {

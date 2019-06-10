@@ -1,4 +1,4 @@
-{% load static from staticfiles%}
+{% load static from staticfiles %}
 <html lang="en">
 <head>
   <title>{% block title %}T|Vision{% endblock %}</title>
@@ -9,16 +9,40 @@
 
 <body>
   <!-- title -->
-  <div class="title">
+  <div class="section">
+    <div class"autoSection">
       <h1 class="autoText">Auto Updates</h1>
+      <p class="small_title_auto">showing auto updates</p>
+      {% for a in auto %}
+        <p> title: {{a.title_text}} </p>
+        <p> description: {{a.description_text}} </p>
+      {% endfor %}
+    </div>
+
+    <div class="releaseSection">
       <h1 class="releaseText">Release Updates</h1>
+      <p class="small_title_release">showing release updates</p>
+      {% for a in release %}
+        <p> release: {{a.title_text}} </p>
+        <p> description: {{a.description_text}} </p>
+      {% endfor %}
+    </div>
+
+    <div class="bugSection">
       <h1 class="bugText">Bug Updates</h1>
+      <p class="small_title_bugs">showing bug updates</p>
+      {% for a in bugs %}
+        <p> bug: {{a.title_text}} </p>
+        <p> description: {{a.description_text}} </p>
+        {% endfor %}
+    </div>
+    
   </div>
 
   <!-- user input in order to display -->
   <div class="home_text">
-      <p class="date_range">Displaying Dates:</p>
-      <button class="homeSubmit" onclick="pageScroll()">Submit</button>
+    <p class="date_range">Displaying Dates:</p>
+    <button class="homeSubmit" onclick="pageScroll()">Submit</button>
   </div>
 
   <!-- dropdown menu to select what to display --> <!--
@@ -34,9 +58,9 @@
 
   <!-- what date(s) to display -->
   <div id="date" class="date">
-      <input type="date" id="startDate" class="startDate" value="mm/dd/yyyy">
-      <p class="range_word">to</p>
-      <input type="date" id="endDate" class="endDate" value="mm/dd/yyyy">
+    <input type="date" id="startDate" class="startDate" value="mm/dd/yyyy">
+    <p class="range_word">to</p>
+    <input type="date" id="endDate" class="endDate" value="mm/dd/yyyy">
   </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

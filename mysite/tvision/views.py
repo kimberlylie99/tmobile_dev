@@ -9,20 +9,31 @@ from django.views.generic import TemplateView
 
 # Create your views here.
 
-def home(request):
-    """View function for home page of site"""
+class HomeView(TemplateView):
 
     #Generating counts of the main objects
-    num_auto = Auto.objects.all().count()
-    num_release = ReleasePage.objects.all().count()
-    num_bug = BugPage.objects.all().count()
+    auto_name = AutoPage.objects.all()
+    release_name = ReleasePage.objects.all()
+    bug_name = BugPage.objects.all()
 
     context = {
-        'auto' : num_auto,
-        'release' : num_release,
-        'bugs' : num_bug,
+        'auto' : auto_name,
+        'release' : release_name,
+        'bugs' : bug_name,
     }
-    return render(request, '/mysite/static/home.html')
 
-class HomeView(TemplateView):
     template_name = 'home.html'
+
+def home(request):
+    #Generating counts of the main objects
+    auto_name = AutoPage.objects.all()
+    release_name = ReleasePage.objects.all()
+    bug_name = BugPage.objects.all()
+
+    context = {
+        'auto' : auto_name,
+        'release' : release_name,
+        'bugs' : bug_name,
+    }
+
+    return render(request, "home.html", context)
