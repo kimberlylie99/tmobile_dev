@@ -10,7 +10,6 @@ from django.views.generic import TemplateView
 # Create your views here.
 
 class HomeView(TemplateView):
-
     #Generating counts of the main objects
     auto_name = AutoPage.objects.all()
     release_name = ReleasePage.objects.all()
@@ -37,3 +36,13 @@ def home(request):
     }
 
     return render(request, "home.html", context)
+
+def upload_pic(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            save_form = AutoPage.objects.get(pk=course_id)
+            save_form.model_pic = form.cleaned_data['image']
+            save_form.save()
+            return HttpResponse('Image Uploaded')
+        return HttpResponse('Allowed only via POST')

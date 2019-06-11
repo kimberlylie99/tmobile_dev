@@ -1,50 +1,85 @@
+/* auto update section */
 h1.autoText {
   color: rgb(255,255,255);
   font-size: 100px;
   font-variant: small-caps;
   text-align: center;
   background-color: rgb(255,0,255);
-  position: relative;
+  background: rgb(255,0,255);
+  padding-left: 470px;
+  padding-right: 470px;
+  position: absolute;
+  top: 0;
 }
 
+p.small_title_auto {
+  position: relative;
+  left: 30px;
+  top: 125px;
+  font-size: 75px;
+}
+
+div.auto_description {
+  position: relative;
+  top: 50px;
+  left: 30px;
+}
+
+/* release update section */
 h1.releaseText {
   color: rgb(255,255,255);
   font-size: 100px;
   font-variant: small-caps;
   text-align: center;
   background-color: rgb(255,0,255);
+  background: rgb(255,0,255);
+  padding-left: 385px;
+  padding-right: 385px;
   position: relative;
-  top: 500px;
+  top: 300px;
 }
 
+p.small_title_release {
+  position: absolute;
+  left: 30px;
+  top: 970px;
+  font-size: 75px;
+}
+
+div.release_description {
+  position: relative;
+  top: 80px;
+  left: 30px;
+}
+
+/* bug update section */
 h1.bugText {
   color: rgb(255,255,255);
   font-size: 100px;
   font-variant: small-caps;
   text-align: center;
   background-color: rgb(255,0,255);
+  background: rgb(255,0,255);
+  padding-left: 480px;
+  padding-right: 480px;
   position: relative;
   top: 1000px;
 }
 
-p.small_title_auto {
-  font-size: 75px;
-  position: absolute;
-  top: 100px;
-}
-
-p.small_title_release {
-  font-size: 75px;
-  position: absolute;
-  top: 100px;
-}
-
 p.small_title_bugs {
-  font-size: 75px;
   position: absolute;
-  top: 100px;
+  left: 30px;
+  top: 1860px;
+  font-size: 75px;
 }
 
+div.bug_description {
+  position: relative;
+  top: 1030px;
+  left: 30px;
+}
+
+/* date range stuff */
 p.display {
   font-size: 20px;
   position: absolute;
@@ -55,21 +90,21 @@ p.display {
 p.date_range {
   font-size: 20px;
   position: absolute;
-  top: 120px;
-  left: 1035px;
+  top: 170px;
+  left: 1027px;
 }
 
 p.range_word {
   font-size: 20px;
   position: absolute;
-  top: 120px;
-  left: 1340px;
+  top: 170px;
+  left: 1335px;
 }
 
 /* submit to diplay */
 .homeSubmit {
   position: absolute;
-  top: 142px;
+  top: 191px;
   left: 1515px;
 }
 
@@ -77,16 +112,16 @@ p.range_word {
 input.startDate {
   display: block;
   position: absolute;
-  top: 140px;
-  left: 1185px;
+  top: 190px;
+  left: 1175px;
   width: 150px;
 }
 
 input.endDate {
   display: block;
   position: absolute;
-  top: 140px;
-  left: 1360px;
+  top: 190px;
+  left: 1355px;
   width: 150px;
 }
 
