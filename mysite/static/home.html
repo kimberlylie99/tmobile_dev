@@ -7,6 +7,20 @@
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <script src="{% static 'animation.js' %}"></script>
 
+<style>
+  div.auto_description {
+    position:relative;
+    top: 200px;
+    left: 30px;
+  }
+
+  div.bug_description {
+    position: relative;
+    top: 970px;
+    left: 30px;
+  }
+</style>
+
 </head>
 
 <body>
@@ -14,18 +28,20 @@
   <div class="section">
     <div class"autoSection">
       <h1 class="autoText">Auto Updates</h1>
-      <p class="small_title_auto">showing auto updates</p>
+      <!--<p class="small_title_auto">showing auto updates</p>-->
       {% for a in auto %}
       <div class="auto_description">
         <p> title: {{a.title_text}} </p>
         <p> description: {{a.description_text}} </p>
+        <!--<input type="file" onChange="handleImage(this)" />
+        <img id="display_image" src="#" alt="your image" />-->
       </div>
       {% endfor %}
     </div>
 
     <div class="releaseSection">
       <h1 class="releaseText">Release Updates</h1>
-      <p class="small_title_release">showing release updates</p>
+      <!--<p class="small_title_release">showing release updates</p>-->
       {% for a in release %}
       <div class="release_description">
         <p> release: {{a.title_text}} </p>
@@ -36,7 +52,7 @@
 
     <div class="bugSection">
       <h1 class="bugText">Bug Updates</h1>
-      <p class="small_title_bugs">showing bug updates</p>
+      <!--<p class="small_title_bugs">showing bug updates</p>-->
       {% for a in bugs %}
       <div class="bug_description">
         <p> bug: {{a.title_text}} </p>
@@ -114,6 +130,16 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   clearTimeout(scrolldelay);
   document.getElementById("myBtn").style.display = "none";
+}
+
+function handleImage(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#display_image').attr('src', e.target.result).width(150).height(200);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
 </script>

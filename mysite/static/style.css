@@ -20,8 +20,8 @@ p.small_title_auto {
 }
 
 div.auto_description {
-  position: relative;
-  top: 50px;
+  position:relative;
+  top: 200px;
   left: 30px;
 }
 
@@ -40,9 +40,9 @@ h1.releaseText {
 }
 
 p.small_title_release {
-  position: absolute;
+  position: relative;
   left: 30px;
-  top: 970px;
+  top: 900px;
   font-size: 75px;
 }
 
@@ -67,7 +67,7 @@ h1.bugText {
 }
 
 p.small_title_bugs {
-  position: absolute;
+  position: relative;
   left: 30px;
   top: 1860px;
   font-size: 75px;
@@ -75,7 +75,7 @@ p.small_title_bugs {
 
 div.bug_description {
   position: relative;
-  top: 1030px;
+  top: 980px;
   left: 30px;
 }
 
