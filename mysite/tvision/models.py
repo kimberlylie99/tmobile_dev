@@ -37,5 +37,3 @@ class BugPage(models.Model):
 class ImageUploadForm(forms.Form):
     """Image Upload Form"""
     image = forms.ImageField()
-
-def image_tag(self):

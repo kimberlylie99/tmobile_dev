@@ -9,7 +9,7 @@ h1.autoText {
   padding-left: 470px;
   padding-right: 470px;
   position: absolute;
-  top: 0;
+  top: 0px;
 }
 
 p.small_title_auto {
@@ -63,7 +63,7 @@ h1.bugText {
   padding-left: 480px;
   padding-right: 480px;
   position: relative;
-  top: 1000px;
+  top: 400px;
 }
 
 p.small_title_bugs {

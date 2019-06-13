@@ -4,6 +4,7 @@ from django.http import HttpResponse
 
 from django.shortcuts import render
 from tvision.models import AutoPage, ReleasePage, BugPage
+from django.shortcuts import get_object_or_404
 
 from django.views.generic import TemplateView
 
@@ -38,11 +39,5 @@ def home(request):
     return render(request, "home.html", context)
 
 def upload_pic(request):
-    if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            save_form = AutoPage.objects.get(pk=course_id)
-            save_form.model_pic = form.cleaned_data['image']
-            save_form.save()
-            return HttpResponse('Image Uploaded')
-        return HttpResponse('Allowed only via POST')
+    album = get_object_or_404(AutoPage, pk=1)
+    return render(request, 'home.html', {'auto_pic':auto_pic})

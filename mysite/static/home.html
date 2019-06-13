@@ -4,22 +4,92 @@
 <meta charset="utf-8">
 <head>
   <title>{% block title %}T|Vision{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'style.css' %}"/>
+  <!--<link rel="stylesheet" href="{% static 'style.css' %}">-->
   <script src="{% static 'animation.js' %}"></script>
 
-<style>
-  div.auto_description {
-    position:relative;
-    top: 200px;
-    left: 30px;
-  }
+<!--  <style>
+/* auto update section */
+h1.autoText {
+  color: rgb(255,255,255);
+  font-size: 100px;
+  font-variant: small-caps;
+  text-align: center;
+  background-color: rgb(255,0,255);
+  background: rgb(255,0,255);
+  padding-left: 470px;
+  padding-right: 470px;
+  position: absolute;
+  top: 0px;
+}
 
-  div.bug_description {
-    position: relative;
-    top: 970px;
-    left: 30px;
-  }
-</style>
+p.small_title_auto {
+  position: relative;
+  left: 30px;
+  top: 125px;
+  font-size: 75px;
+}
+
+div.auto_description {
+  position:relative;
+  top: 200px;
+  left: 30px;
+}
+
+/* release update section */
+h1.releaseText {
+  color: rgb(255,255,255);
+  font-size: 100px;
+  font-variant: small-caps;
+  text-align: center;
+  background-color: rgb(255,0,255);
+  background: rgb(255,0,255);
+  padding-left: 385px;
+  padding-right: 385px;
+  position: relative;
+  top: 300px;
+}
+
+p.small_title_release {
+  position: relative;
+  left: 30px;
+  top: 900px;
+  font-size: 75px;
+}
+
+div.release_description {
+  position: relative;
+  top: 80px;
+  left: 30px;
+}
+
+/* bug update section */
+h1.bugText {
+  color: rgb(255,255,255);
+  font-size: 100px;
+  font-variant: small-caps;
+  text-align: center;
+  background-color: rgb(255,0,255);
+  background: rgb(255,0,255);
+  padding-left: 480px;
+  padding-right: 480px;
+  position: relative;
+  top: 400px;
+}
+
+p.small_title_bugs {
+  position: relative;
+  left: 30px;
+  top: 1860px;
+  font-size: 75px;
+}
+
+div.bug_description {
+  position: relative;
+  top: 980px;
+  left: 30px;
+}
+</style> -->
 
 </head>
 
@@ -33,6 +103,7 @@
       <div class="auto_description">
         <p> title: {{a.title_text}} </p>
         <p> description: {{a.description_text}} </p>
+        <img src="{{a.upload.url}}" alt="BUT WHY" height="500"/>
         <!--<input type="file" onChange="handleImage(this)" />
         <img id="display_image" src="#" alt="your image" />-->
       </div>
