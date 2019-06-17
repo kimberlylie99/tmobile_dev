@@ -172,10 +172,12 @@ input.endDate {
       <h1 class="autoText">Auto Updates</h1>
       {% for a in auto %}
       <div class="auto_description">
+        <p class="title"> {{ a.data }}</p>
+        <!--
         <p class="title"> {{a.title_text}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
         <p class="description"> description: {{a.description_text}} </p>
-        <img src="{{a.upload.url}}" alt="BUT WHY" height="300"/>
+        <img src="{{a.upload.url}}" alt="BUT WHY" height="300"/> -->
       </div>
       {% endfor %}
     </div>
@@ -223,10 +225,12 @@ input.endDate {
 
   <!-- what date(s) to display -->
   <!-- https://stackoverflow.com/questions/47264373/importing-date-from-html-into-django-views -->
-  <div id="date" class="date" method="GET">
-    <input type="date" id="startDate" class="startDate" name="startDate" value="mm/dd/yyyy">
-    <p class="range_word">to</p>
-    <input type="date" id="endDate" class="endDate" name="startDate" value="mm/dd/yyyy">
+  <div id="date" class="date"
+    <form method="GET">
+      <input type="date" id="startDate" class="startDate" name="startDate" value="mm/dd/yyyy">
+      <p class="range_word">to</p>
+      <input type="date" id="endDate" class="endDate" name="startDate" value="mm/dd/yyyy">
+    </form>
   </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
