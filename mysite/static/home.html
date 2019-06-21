@@ -48,6 +48,12 @@ p.description {
   font-family: Verdana, sans-serif;
 }
 
+p.test {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
 /* release update section */
 h1.releaseText {
   color: rgb(255,255,255);
@@ -159,6 +165,17 @@ input.endDate {
 </head>
 
 <body>
+
+  <!-- what date(s) to display -->
+  <!-- https://stackoverflow.com/questions/47264373/importing-date-from-html-into-django-views -->
+  <div id="date" class="date">
+    <form method="GET">
+      <input type="date" id="startDate" class="startDate" name="startDate" value="mm/dd/yyyy">
+      <p class="range_word">to</p>
+      <input type="date" id="endDate" class="endDate" name="endDate" value="mm/dd/yyyy">
+    </form>
+  </div>
+
   <!-- title -->
   <div class="section">
     <h1>Welcome to
@@ -201,7 +218,6 @@ input.endDate {
       </div>
       {% endfor %}
     </div>
-
   </div>
 
   <!-- user input in order to display -->
@@ -220,16 +236,6 @@ input.endDate {
     <p id="bugsText" class="bugsText">BUGS</p>
     <a href>
   </div> -->
-
-  <!-- what date(s) to display -->
-  <!-- https://stackoverflow.com/questions/47264373/importing-date-from-html-into-django-views -->
-  <div id="date" class="date">
-    <form method="GET">
-      <input type="date" id="startDate" class="startDate" name="startDate" value="mm/dd/yyyy">
-      <p class="range_word">to</p>
-      <input type="date" id="endDate" class="endDate" name="endDate" value="mm/dd/yyyy">
-    </form>
-  </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 

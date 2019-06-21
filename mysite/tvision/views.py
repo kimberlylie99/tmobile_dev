@@ -42,7 +42,7 @@ def home(request):
 #            except ValueError as e:
 #                errors["endDate"] = "Invalid date"
 
-
+        print(startDate)
 
         #data = AutoPage.objects.filter(pub_date__range=[startDate,endDate])
         if startDate and endDate:
@@ -53,6 +53,7 @@ def home(request):
             auto_data = AutoPage.objects.all()
             release_data = ReleasePage.objects.all()
             bug_data = BugPage.objects.all()
+
 
         #Generating counts of the main objects
         #auto_name = AutoPage.objects.all().filter(startDate__gte=startDate, endDate__lte=endDate)
