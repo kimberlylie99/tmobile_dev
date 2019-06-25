@@ -182,8 +182,9 @@ input.endDate {
 
     <form method="GET">{% csrf_token %}
       DISPLAY BETWEEN {{ start_date }} AND {{ end_date }}
-      <button type="submit" class="homeSubmit" onclick="pageScroll()">Submit</button>
+      <!--<button type="submit" class="homeSubmit" onclick="pageScroll()">Submit</button>-->
     </form>
+    <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Submit" />
   </div>
 
   <!-- title -->
