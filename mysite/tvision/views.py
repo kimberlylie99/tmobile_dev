@@ -3,30 +3,30 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 
 from django.shortcuts import render
-from tvision.models import AutoPage, ReleasePage, BugPage
+from tvision.models import AutoPage, ReleasePage, BugPage, StartDateForm, EndDateForm
 from django.shortcuts import get_object_or_404
 
 from django.views.generic import TemplateView
 
 # Create your views here.
 
-class HomeView(TemplateView):
+#class HomeView(TemplateView):
     #Generating counts of the main objects
-    auto_name = AutoPage.objects.all()
-    release_name = ReleasePage.objects.all()
-    bug_name = BugPage.objects.all()
+#    auto_name = AutoPage.objects.all()
+#    release_name = ReleasePage.objects.all()
+#    bug_name = BugPage.objects.all()
 
-    context = {
-        'auto' : auto_name,
-        'release' : release_name,
-        'bugs' : bug_name,
-    }
+#    context = {
+#        'auto' : auto_name,
+#        'release' : release_name,
+#        'bugs' : bug_name,
+#    }
 
-    template_name = 'home.html'
+#    template_name = 'home.html'
 
 def home(request):
-        startDate = request.GET.get('startDate')
-        endDate = request.GET.get('endDate')
+        startDate = request.GET.get('start_date')
+        endDate = request.GET.get('end_date')
 
 #        parsed_start_date = None
 #        parsed_end_date = None
@@ -42,7 +42,6 @@ def home(request):
 #            except ValueError as e:
 #                errors["endDate"] = "Invalid date"
 
-        print(startDate)
 
         #data = AutoPage.objects.filter(pub_date__range=[startDate,endDate])
         if startDate and endDate:
@@ -64,10 +63,14 @@ def home(request):
 #        release_data = ReleasePage.objects.all()
 #        bug_data = BugPage.objects.all()
 
+
+
         context = {
             'auto' : auto_data,
             'release' : release_data,
             'bugs' : bug_data,
+            'start_date' : StartDateForm,
+            'end_date' : EndDateForm,
         }
 
         return render(request, "home.html", context)

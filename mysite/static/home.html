@@ -102,6 +102,11 @@ div.bug_description {
   top: 200px;
   left: 630px;
 }*/
+div.date {
+  position: absolute;
+  top: 440px;
+  left: 175px;
+}
 
 p.date_range {
   font-size: 20px;
@@ -120,8 +125,8 @@ p.range_word {
 /* submit button to diplay */
 .homeSubmit {
   position: absolute;
-  top: 442px;
-  left: 715px;
+  top: 2px;
+  left: 630px;
 }
 
 /* date */
@@ -169,10 +174,15 @@ input.endDate {
   <!-- what date(s) to display -->
   <!-- https://stackoverflow.com/questions/47264373/importing-date-from-html-into-django-views -->
   <div id="date" class="date">
-    <form method="GET">
+    <!--<form method="GET">
       <input type="date" id="startDate" class="startDate" name="startDate" value="mm/dd/yyyy">
       <p class="range_word">to</p>
       <input type="date" id="endDate" class="endDate" name="endDate" value="mm/dd/yyyy">
+    </form>-->
+
+    <form method="GET">{% csrf_token %}
+      DISPLAY BETWEEN {{ start_date }} AND {{ end_date }}
+      <button type="submit" class="homeSubmit" onclick="pageScroll()">Submit</button>
     </form>
   </div>
 
@@ -220,11 +230,11 @@ input.endDate {
     </div>
   </div>
 
-  <!-- user input in order to display -->
+  <!-- user input in order to display
   <div class="home_text">
     <p class="date_range">Displaying Dates:</p>
     <button class="homeSubmit" onclick="pageScroll()">Submit</button>
-  </div>
+  </div> -->
 
   <!-- dropdown menu to select what to display --> <!--
   <div class="display_choices">
@@ -251,9 +261,6 @@ input.endDate {
 var autoBox = document.getElementById("auto_choice");
 var releaseBox = document.getElementById("release_choice");
 var bugsBox = document.getElementById("bugs_choice");
-
-var startDate = document.getElementById("startDate");
-var endDate = document.getElementById("endDate");
 
 /*
 function pageScroll() {
@@ -349,6 +356,14 @@ window.onload = function() {
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
 };
+
+$(function() {
+  $(".datepicker").datepicker({
+    changeMonth : true,
+    chageYear : true,
+    yearRange : "1900:2019",
+  })
+})
 
 </script>
 

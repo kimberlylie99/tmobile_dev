@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django import forms
+from django.forms import ModelForm
 
 import csv
 from django.http import HttpResponse
@@ -37,3 +38,13 @@ class BugPage(models.Model):
 class ImageUploadForm(forms.Form):
     """Image Upload Form"""
     image = forms.ImageField()
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class StartDateForm(forms.Form):
+    """Get User Input Date"""
+    start_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
+
+class EndDateForm(forms.Form):
+    end_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
