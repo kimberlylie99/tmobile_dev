@@ -1,3 +1,12 @@
+h1 {
+  color: rgb(0,0,0);
+  font-size: 100px;
+  font-variant: small-caps;
+  text-align: left;
+  position: absolute;
+  top: 250px;
+}
+
 /* auto update section */
 h1.autoText {
   color: rgb(255,255,255);
@@ -7,22 +16,31 @@ h1.autoText {
   background-color: rgb(255,0,255);
   background: rgb(255,0,255);
   padding-left: 470px;
-  padding-right: 470px;
+  padding-right: 470px;*/
   position: absolute;
-  top: 0px;
-}
-
-p.small_title_auto {
-  position: relative;
-  left: 30px;
-  top: 125px;
-  font-size: 75px;
+  top: 800px;
 }
 
 div.auto_description {
   position:relative;
-  top: 200px;
+  top: 980px;
   left: 30px;
+}
+
+p.title {
+  font-size: 50px;
+  font-family: Verdana, sans-serif;
+}
+
+p.description {
+  font-size: 20px;
+  font-family: Verdana, sans-serif;
+}
+
+p.test {
+  position: absolute;
+  top: 30px;
+  left: 50px;
 }
 
 /* release update section */
@@ -36,14 +54,7 @@ h1.releaseText {
   padding-left: 385px;
   padding-right: 385px;
   position: relative;
-  top: 300px;
-}
-
-p.small_title_release {
-  position: relative;
-  left: 30px;
-  top: 900px;
-  font-size: 75px;
+  top: 1000px;
 }
 
 div.release_description {
@@ -63,14 +74,7 @@ h1.bugText {
   padding-left: 480px;
   padding-right: 480px;
   position: relative;
-  top: 400px;
-}
-
-p.small_title_bugs {
-  position: relative;
-  left: 30px;
-  top: 1860px;
-  font-size: 75px;
+  top: 1025px;
 }
 
 div.bug_description {
@@ -80,48 +84,54 @@ div.bug_description {
 }
 
 /* date range stuff */
-p.display {
+/* "Displaying images" */
+/*p.display {
   font-size: 20px;
   position: absolute;
   top: 200px;
   left: 630px;
+}*/
+div.date {
+  position: absolute;
+  top: 440px;
+  left: 175px;
 }
 
 p.date_range {
   font-size: 20px;
   position: absolute;
-  top: 170px;
-  left: 1027px;
+  top: 420px;
+  left: 200px;
 }
 
 p.range_word {
   font-size: 20px;
   position: absolute;
-  top: 170px;
-  left: 1335px;
+  top: 420px;
+  left: 520px;
 }
 
-/* submit to diplay */
+/* submit button to diplay */
 .homeSubmit {
   position: absolute;
-  top: 191px;
-  left: 1515px;
+  top: 2px;
+  left: 630px;
 }
 
 /* date */
 input.startDate {
   display: block;
   position: absolute;
-  top: 190px;
-  left: 1175px;
+  top: 440px;
+  left: 350px;
   width: 150px;
 }
 
 input.endDate {
   display: block;
   position: absolute;
-  top: 190px;
-  left: 1355px;
+  top: 440px;
+  left: 550px;
   width: 150px;
 }
 
@@ -143,4 +153,10 @@ input.endDate {
 
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
+}
+
+body {
+  background: url(tvision_logo.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

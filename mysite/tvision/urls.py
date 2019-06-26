@@ -7,5 +7,6 @@ urlpatterns = [
     #url('', TemplateView.as_view(template_name='home.html')),
     url('',views.home,name='home'),
 ]
+
     #url('', views.home, name='home'),
     #url('', TemplateView.as_view(template_name='home.html')),

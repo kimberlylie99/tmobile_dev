@@ -24,8 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('tvision/', include('tvision.urls')),
 ] + static(settings.ROOT_URLCONF, document_root=settings.BASE_DIR)
-#+ static(settings.ROOT_URLCONF, document_root=settings.BASE_DIR)
-#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
