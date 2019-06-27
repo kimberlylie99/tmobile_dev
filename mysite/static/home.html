@@ -195,7 +195,7 @@ input.endDate {
         <p class="title"> {{a.title_text}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
         <p class="description"> description: {{a.description_text}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" height="300"></img><br>
+        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
         <a href="{{a.link.user_link}}" alt="no link provided">{{a.link.link_title}}</a>
       </div>
       {% endfor %}
@@ -208,8 +208,8 @@ input.endDate {
         <p class="title"> {{a.title_text}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
         <p class="description"> description: {{a.description_text}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" height="300"></img><br>
-        <a href="{{a.link.user_link}}" alt="no link provided">{{a.link.link_title}}</a>
+        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
+        <a href="{% url 'a.link.user_link' %}" alt="no link provided">{{a.link.link_title}}</a>
       </div>
       {% endfor %}
     </div>
@@ -221,7 +221,7 @@ input.endDate {
         <p class="title"> {{a.title_text}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
         <p class="description"> description: {{a.description_text}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" height="300"></img><br>
+        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
         <a href="{{a.link.user_link}}" alt="no link provided">Link: {{a.link.link_title}}</a>
       </div>
       {% endfor %}

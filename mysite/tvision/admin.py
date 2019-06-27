@@ -33,6 +33,7 @@ admin_site.register(BugLink)
 class AdminLink(admin.ModelAdmin):
     list_display = [
         "pub_date",
+        "author",
         "title_text",
         "description_text",
         "upload",

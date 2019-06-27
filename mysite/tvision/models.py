@@ -12,49 +12,55 @@ from django.http import HttpResponse
 
 # Create your models here.
 class AutoLink(models.Model):
-    link_title = models.CharField(max_length=500)
+    link_title = models.CharField(max_length=500, null=True)
+    link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.link_title
+        return self.link_title, self.link_author
 
 class ReleaseLink(models.Model):
-    link_title = models.CharField(max_length=500)
+    link_title = models.CharField(max_length=500, null=True)
+    link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.link_title
+        return self.link_title, self.link_author
 
 class BugLink(models.Model):
-    link_title = models.CharField(max_length=500)
+    link_title = models.CharField(max_length=500, null=True)
+    link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.link_title
+        return self.link_title, self.link_author
 
 class AutoPage(models.Model):
     pub_date = models.DateTimeField('date published')
-    title_text = models.CharField(max_length=1000)
+    author = models.CharField(max_length=500, null=True)
+    title_text = models.CharField(max_length=1000, default='BLANK', blank=True, null=True)
     description_text = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='auto_images/', default='auto_images/')
+    upload = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
     link = models.ForeignKey(AutoLink, blank=True, null=True)
     def __str__(self):
         return self.title_text
 
 class ReleasePage(models.Model):
     pub_date = models.DateTimeField('date published')
-    title_text = models.CharField(max_length=200)
+    author = models.CharField(max_length=500, null=True)
+    title_text = models.CharField(max_length=1000, null=True)
     description_text = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='release_images/', default='release_images/')
+    upload = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
     link = models.ForeignKey(ReleaseLink, blank=True, null=True)
     def __str__(self):
         return self.title_text
 
 class BugPage(models.Model):
     pub_date = models.DateTimeField('date published')
-    title_text = models.CharField(max_length=200)
+    author = models.CharField(max_length=500, null=True)
+    title_text = models.CharField(max_length=1000, null=True)
     description_text = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='bug_images/', default='bug_images/')
+    upload = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
     link = models.ForeignKey(BugLink, blank=True, null=True)
     def __str__(self):
         return self.title_text
