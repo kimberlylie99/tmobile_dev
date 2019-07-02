@@ -192,9 +192,9 @@ input.endDate {
       <h1 class="autoText">Auto Updates</h1>
       {% for a in auto %}
       <div class="auto_description">
-        <p class="title"> {{a.title_text}} </p>
+        <p class="title"> {{a.title}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.description_text}} </p>
+        <p class="description"> description: {{a.precondition}} </p>
         <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
         <a href="{{a.link.user_link}}" alt="no link provided">{{a.link.link_title}}</a>
       </div>
@@ -205,9 +205,9 @@ input.endDate {
       <h1 class="releaseText">Release Updates</h1>
       {% for a in release %}
       <div class="release_description">
-        <p class="title"> {{a.title_text}} </p>
+        <p class="title"> {{a.title}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.description_text}} </p>
+        <p class="description"> description: {{a.preconition}} </p>
         <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
         <a href="{% url 'a.link.user_link' %}" alt="no link provided">{{a.link.link_title}}</a>
       </div>
@@ -218,9 +218,9 @@ input.endDate {
       <h1 class="bugText">Bug Updates</h1>
       {% for a in bugs %}
       <div class="bug_description">
-        <p class="title"> {{a.title_text}} </p>
+        <p class="title"> {{a.title}} </p>
         <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.description_text}} </p>
+        <p class="description"> description: {{a.preconditio}} </p>
         <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
         <a href="{{a.link.user_link}}" alt="no link provided">Link: {{a.link.link_title}}</a>
       </div>

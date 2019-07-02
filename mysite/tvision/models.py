@@ -15,31 +15,28 @@ class AutoLink(models.Model):
     link_title = models.CharField(max_length=500, null=True)
     link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
-
     def __str__(self):
-        return self.link_title, self.link_author
+        return self.link_title
 
 class ReleaseLink(models.Model):
     link_title = models.CharField(max_length=500, null=True)
     link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
-
     def __str__(self):
-        return self.link_title, self.link_author
+        return self.link_title
 
 class BugLink(models.Model):
     link_title = models.CharField(max_length=500, null=True)
     link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
-
     def __str__(self):
-        return self.link_title, self.link_author
+        return self.link_title
 
 class AutoPage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
-    title_text = models.CharField(max_length=1000, default='BLANK', blank=True, null=True)
-    description_text = models.TextField(blank=True)
+    title = models.CharField(max_length=1000, blank=True, null=True)
+    precondition = models.TextField(blank=True)
     upload = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
     link = models.ForeignKey(AutoLink, blank=True, null=True)
     def __str__(self):
@@ -48,8 +45,8 @@ class AutoPage(models.Model):
 class ReleasePage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
-    title_text = models.CharField(max_length=1000, null=True)
-    description_text = models.TextField(blank=True)
+    title = models.CharField(max_length=1000, null=True)
+    precondition = models.TextField(blank=True)
     upload = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
     link = models.ForeignKey(ReleaseLink, blank=True, null=True)
     def __str__(self):
@@ -58,8 +55,8 @@ class ReleasePage(models.Model):
 class BugPage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
-    title_text = models.CharField(max_length=1000, null=True)
-    description_text = models.TextField(blank=True)
+    title = models.CharField(max_length=1000, null=True)
+    precondition = models.TextField(blank=True)
     upload = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
     link = models.ForeignKey(BugLink, blank=True, null=True)
     def __str__(self):

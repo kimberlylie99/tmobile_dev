@@ -34,3 +34,11 @@ def home(request):
 def upload_pic(request):
     album = get_object_or_404(AutoPage, pk=1)
     return render(request, 'home.html', {'auto_pic':auto_pic})
+
+# adding pie chart
+# https://github.com/agiliq/django-graphos
+# https://github.com/sainipray/neerajbyte
+def piechart(request):
+    """piechart stuff"""
+    xdata = ["passed","blocked","retest","rollback-passed","rollback-failed","conditional","failed"]
+    ydata = [75,0,0,0,0,10,15]
