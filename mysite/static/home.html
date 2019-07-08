@@ -39,7 +39,7 @@ div.auto_description {
 }
 
 p.title {
-  font-size: 50px;
+  font-size: 40px;
   font-family: Verdana, sans-serif;
 }
 
@@ -177,7 +177,8 @@ input.endDate {
       <a
         class="typewrite" data-period="2000" data-type='["T|Vision.","Summaries.","Auto Updates.","Release Updates.","Bug Updates."]'>
         <span class="wrap"></span>
-      </a>
+      </a></br>
+      <img src="{{ 'media/web_images/chart.png' }}" class="piechart" alt="display pie chart">
     </h1>
 
     <div class"autoSection">
@@ -185,10 +186,14 @@ input.endDate {
       {% for a in auto %}
       <div class="auto_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.precondition}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
-        <a href="{{a.link.user_link}}" alt="no link provided">{{a.link.link_title}}</a>
+        <p class="description"> Date: {{a.pub_date}} </p>
+        <p class="description"> Author: {{a.author}} </p>
+        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
       </div>
       {% endfor %}
     </div>

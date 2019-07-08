@@ -10,8 +10,8 @@ from django.contrib import admin
 import csv
 from django.http import HttpResponse
 
-# Create your models here.
-class AutoLink(models.Model):
+# Including links
+class AutomatedLink(models.Model):
     link_title = models.CharField(max_length=500, null=True)
     link_author = models.CharField(max_length=500, null=True)
     user_link = models.CharField(max_length=1000)
@@ -32,35 +32,45 @@ class BugLink(models.Model):
     def __str__(self):
         return self.link_title
 
-class AutoPage(models.Model):
+# Inclduing specific pages
+class AutomatedPage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
     title = models.CharField(max_length=1000, blank=True, null=True)
     precondition = models.TextField(blank=True)
+    steps = models.TextField(blank=True)
+    parameters = models.TextField(blank=True)
+    comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
-    link = models.ForeignKey(AutoLink, blank=True, null=True)
+    link = models.ForeignKey(AutomatedLink, blank=True, null=True)
     def __str__(self):
-        return self.title_text
+        return self.title
 
 class ReleasePage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
     title = models.CharField(max_length=1000, null=True)
     precondition = models.TextField(blank=True)
+    steps = models.TextField(blank=True)
+    parameters = models.TextField(blank=True)
+    comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
     link = models.ForeignKey(ReleaseLink, blank=True, null=True)
     def __str__(self):
-        return self.title_text
+        return self.title
 
 class BugPage(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=500, null=True)
     title = models.CharField(max_length=1000, null=True)
     precondition = models.TextField(blank=True)
+    steps = models.TextField(blank=True)
+    parameters = models.TextField(blank=True)
+    comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
     link = models.ForeignKey(BugLink, blank=True, null=True)
     def __str__(self):
-        return self.title_text
+        return self.title
 
 # uploading Images
 class ImageUploadForm(forms.Form):
