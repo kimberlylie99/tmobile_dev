@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     #url('', TemplateView.as_view(template_name='home.html')),
     url('',views.home,name='home'),
-    url('',views.piechart,name='piechart')
+    #url('',views.piechart,name='piechart')
 ]
 
     #url('', views.home, name='home'),

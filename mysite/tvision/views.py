@@ -9,14 +9,13 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
 # for pie chart stuff
-from matplotlib import pylab
-from matplotlib import pyplot as plt
-from pylab import *
-import PIL, PIL.Image, StringIO
+#from matplotlib import pylab
+#from matplotlib import pyplot as plt
+#from pylab import *
+#import PIL, PIL.Image, StringIO
 
+import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.axes.Axes.pie
-matplotlib.pyplot.pie
 
 # displaying home page
 def home(request):
@@ -56,7 +55,6 @@ def upload_pic(request):
 #    xdata = ["passed","blocked","retest","rollback-passed","rollback-failed","conditional","failed"]
 #    ydata = [75,0,0,0,0,10,15]
 
-def piechart(request):
 #    figure(1,figsize(6,6))
 #    ax = axes([0.1,0.1,0.8,0.8])
 
@@ -72,46 +70,49 @@ def piechart(request):
 
 #    plt.show()
 
-#   constructing the graph
-    x = arrange(0, 2*pi, 0.01)
-    s = cos(x)**2
-    plot(x,s)
 
-    xlabel('xlabel(x)')
-    ylabel('ylabel(y)')
-    title('simple graph')
-    grid(True)
+#   constructing the graph
+#    x = arrange(0, 2*pi, 0.01)
+#    s = cos(x)**2
+#    plot(x,s)
+
+#    xlabel('xlabel(x)')
+#    ylabel('ylabel(y)')
+#    title('simple graph')
+#    grid(True)
 
 #   store image in a string buffer
-    buffer = StringIO.StringIO()
-    canvas = pylab.get_current_fig_manager().canvas
-    canvas.draw()
-    pilImage = PIL.Image.fromstring("RGB", canvas.get_width_height(), canvas.tostrong_rgb())
-    pilImage.save(buffer, "PNG")
-    pilImage.save('media/web_images/chart.png')
-    pylab.close()
+#    buffer = StringIO.StringIO()
+#    canvas = pylab.get_current_fig_manager().canvas
+#    canvas.draw()
+#    pilImage = PIL.Image.fromstring("RGB", canvas.get_width_height(), canvas.tostrong_rgb())
+#    pilImage.save(buffer, "PNG")
+#    pilImage.save('media/web_images/chart.png')
+#    pylab.close()
 
 #   try 2
-    labels = 'Frogs','Hogs','Dogs','Logs'
+#def piechart(request):
+#    labels = 'Frogs','Hogs','Dogs','Logs'
 
-    sizes = [15,30,45,10]
+#    sizes = [15,30,45,10]
 
-#    colors = ['r', 'y', 'g', 'b']
+#    colors = ['red', 'yellow', 'green', 'blue']
 
-    explode = (0,0.1,0,0)
+#    explode = (0,0.1,0,0)
 
-    fig1,ax1 = plt.subplots()
+#    fig1,ax1 = plt.subplots()
 
-    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
+#    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+#        shadow=True, startangle=90)
 
-    ax1.axis('equal')
+
+#    plt.axis('equal')
 
 #    plt.legend()
 
-    fig1.show()
-    fig1.savefig("media/web_images/chart.png")
+#    plt.show()
+#    plt.savefig('mysite/media/web_images/chart.png')
 
 #   send buffer to browser
-    return HttpResponse(buffer.getvalue(), content_type="image/png")
-    return render(request)
+#    return HttpResponse(buffer.getvalue(), content_type="image/png")
+#    return render(request)
