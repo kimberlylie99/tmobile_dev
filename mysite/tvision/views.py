@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 
 from django.shortcuts import render
-from tvision.models import AutomatedPage, ReleasePage, BugPage, StartDateForm, EndDateForm
+from tvision.models import AutomatedPage, ReleasePage, BugPage, StartDateForm, EndDateForm, DisplayFrontImages
 from django.shortcuts import get_object_or_404
 
 from django.views.generic import TemplateView
+
+from django.core.files.storage import FileSystemStorage
 
 # for pie chart stuff
 #from matplotlib import pylab
@@ -37,14 +39,23 @@ def home(request):
             'bugs' : bug_data,
             'start_date' : StartDateForm,
             'end_date' : EndDateForm,
+            'main' : DisplayFrontImages
         }
 
         return render(request, "home.html", context)
 
 # allowing user to upload image
 def upload_pic(request):
-    album = get_object_or_404(AutoPage, pk=1)
-    return render(request, 'home.html', {'auto_pic':auto_pic})
+    auto_page = get_object_or_404(AutomatedPage, pk=1)
+    main_images = get_object_or_404(DisplayFrontImages, pk=1)
+    #main_images = DisplayFrontImages.objects.get(id=pk)
+    return render(request, 'home.html', context={'auto':auto_page, 'main':main_images})
+
+def upload_file(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage(location='/media/documents')
+        fs.save(uploaded_file.name, uploaded_file)
 
 # adding pie chart
 
