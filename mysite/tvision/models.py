@@ -67,7 +67,10 @@ class AutomatedPage(models.Model):
     comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
     link = models.ForeignKey(AutomatedLink, blank=True, null=True)
-    document_link = models.FileField(upload_to='auto_documents/', default='auto_documents/', blank=True, null=True)
+    def get_document_url(self):
+        if self.file:
+            document_link = models.FileField(upload_to='auto_documents/', default='auto_documents/', blank=True, null=True)
+            return 'auto_documents/' + self.file.name
     def __str__(self):
         return self.title
 
@@ -81,7 +84,10 @@ class ReleasePage(models.Model):
     comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
     link = models.ForeignKey(ReleaseLink, blank=True, null=True)
-    document_link = models.ForeignKey(ReleaseDocument, blank=True, null=True)
+    def get_document_url(self):
+        if self.file:
+            document_link = models.FileField(upload_to='release_documents/', default='release_documents/', blank=True, null=True)
+            return 'release_documents/' + self.file.name
     def __str__(self):
         return self.title
 
@@ -95,9 +101,16 @@ class BugPage(models.Model):
     comments = models.TextField(blank=True)
     upload = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
     link = models.ForeignKey(BugLink, blank=True, null=True)
-    document_link = models.ForeignKey(BugDocument, blank=True, null=True)
+    def get_document_url(self):
+        if self.file:
+            document_link = models.FileField(upload_to='bug_documents/', default='bug_documents/', blank=True, null=True)
+            return 'bug_documents/' + self.file.name
     def __str__(self):
         return self.title
+
+class DisplayFrontImages(models.Model):
+    upload = models.ImageField(upload_to='web_images/', default='web_images/', blank=True, null=True)
+    title = models.CharField(max_length=1000, blank=True, null=True)
 
 # uploading Images
 class ImageUploadForm(forms.Form):
@@ -111,9 +124,3 @@ class StartDateForm(forms.Form):
 
 class EndDateForm(forms.Form):
     end_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
-
-class DisplayFrontImages(models.Model):
-    upload = models.ImageField(upload_to='web_images/', default='web_images/', blank=True, null=True)
-    title = models.CharField(max_length=1000, blank=True, null=True)
-    def __str__(self):
-        return self.title

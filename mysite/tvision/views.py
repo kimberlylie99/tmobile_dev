@@ -24,8 +24,10 @@ def home(request):
         startDate = request.GET.get('start_date')
         endDate = request.GET.get('end_date')
 
+        display_main = DisplayFrontImages.objects.all()
+
         if startDate and endDate:
-            auto_data = AutomatedPage.objects.filter(pub_date__range=[startDate,endDate])
+            automated_data = AutomatedPage.objects.filter(pub_date__range=[startDate,endDate])
             release_data = ReleasePage.objects.filter(pub_date__range=[startDate,endDate])
             bug_data = BugPage.objects.filter(pub_date__range=[startDate,endDate])
         else:
@@ -39,7 +41,7 @@ def home(request):
             'bugs' : bug_data,
             'start_date' : StartDateForm,
             'end_date' : EndDateForm,
-            'main' : DisplayFrontImages
+            'main' : display_main
         }
 
         return render(request, "home.html", context)

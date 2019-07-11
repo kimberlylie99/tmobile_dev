@@ -18,6 +18,20 @@ h1 {
   top: 250px;
 }
 
+h1.auto_graph {
+  position: absolute;
+  top: 800px;
+}
+
+h1.release_graph {
+  position: absolute;
+  top: 2275px;
+}
+
+h1.bug_graph {
+  position: absolute;
+  top: 3125px;
+}
 /* auto update section */
 h1.autoText {
   color: rgb(255,255,255);
@@ -29,12 +43,12 @@ h1.autoText {
   padding-left: 470px;
   padding-right: 470px;*/
   position: absolute;
-  top: 800px;
+  top: 1200px;
 }
 
 div.auto_description {
   position:relative;
-  top: 980px;
+  top: 950px;
   left: 30px;
 }
 
@@ -65,7 +79,7 @@ h1.releaseText {
   padding-left: 385px;
   padding-right: 385px;
   position: relative;
-  top: 1000px;
+  top: 1200px;
 }
 
 div.release_description {
@@ -85,7 +99,7 @@ h1.bugText {
   padding-left: 480px;
   padding-right: 480px;
   position: relative;
-  top: 1025px;
+  top: 1400px;
 }
 
 div.bug_description {
@@ -138,12 +152,55 @@ input.endDate {
   width: 150px;
 }
 
-div.main_images {
+#autoFrontPage {
   position: absolute;
-  top: 10px;
+  top: -200px;
   left: 10px;
-  width: 400px;
-  height: 200px;
+  height: 420px;
+  width: 10000px;
+  border: 0px;
+}
+
+#outer_autoFrontPage {
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  width: 850px;
+  top: 975px;
+}
+
+#releaseFrontPage {
+  position: absolute;
+  top: -200px;
+  left: 10px;
+  height: 420px;
+  width: 10000px;
+  border: 0px;
+}
+
+#outer_releaseFrontPage {
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  width: 850px;
+  top:  1400px;
+}
+
+#bugFrontPage {
+  position: absolute;
+  top: -200px;
+  left: 10px;
+  height: 420px;
+  width: 10000px;
+  border: 0px;
+}
+
+#outer_bugFrontPage {
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  width: 850px;
+  top: 1600px;
 }
 
 #myBtn {
@@ -179,11 +236,6 @@ div.main_images {
     <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Submit" />
   </div>
 
-  {% block content %}
-  <div class="main_images">
-    <img src="{{main.upload.url}}"  alt="no image provided" onerror="this.style.display='none'" height="300"></img>
-  </div>
-  {% endblock %}
   <!-- title -->
   <div>
     <h1>Welcome to
@@ -192,6 +244,15 @@ div.main_images {
         <span class="wrap"></span>
       </a></br>
     </h1>
+
+    <h1 class="auto_graph"> Automated Graph </h1>
+
+    <div id="outer_autoFrontPage">
+      <!--{% for a in main %}
+        <img src="{{a.upload.url}}"  alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+      {% endfor %}-->
+      <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="autoFrontPage" scrolling="no"></iframe>
+    </div>
 
     <div class"autoSection">
       <h1 class="autoText">Auto Updates</h1>
@@ -208,11 +269,20 @@ div.main_images {
         <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
         <form method="GET">
           {% csrf_token %}
-          Attached document: <a href="{{ a.document_link }}">download</a>
+          Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
           <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
         </form>
       </div>
       {% endfor %}
+    </div>
+
+    <h1 class="release_graph"> Release Graph </h1>
+
+    <div id="outer_releaseFrontPage">
+      <!--{% for a in main %}
+        <img src="{{a.upload.url}}"  alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+      {% endfor %}-->
+      <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="releaseFrontPage" scrolling="no"></iframe>
     </div>
 
     <div class="releaseSection">
@@ -226,6 +296,15 @@ div.main_images {
         <a href="{% url 'a.link.user_link' %}" alt="no link provided">{{a.link.link_title}}</a>
       </div>
       {% endfor %}
+    </div>
+
+    <h1 class="bug_graph"> Bug Graph </h1>
+
+    <div id="outer_bugFrontPage">
+      <!--{% for a in main %}
+        <img src="{{a.upload.url}}"  alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+      {% endfor %}-->
+      <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="bugFrontPage" scrolling="no"></iframe>
     </div>
 
     <div class="bugSection">
