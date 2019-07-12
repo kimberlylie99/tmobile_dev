@@ -38,7 +38,7 @@ def home(request):
         context = {
             'auto' : automated_data,
             'release' : release_data,
-            'bugs' : bug_data,
+            'bug' : bug_data,
             'start_date' : StartDateForm,
             'end_date' : EndDateForm,
             'main' : display_main

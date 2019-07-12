@@ -24,13 +24,13 @@ h1.auto_graph {
 }
 
 h1.release_graph {
-  position: absolute;
-  top: 2275px;
+  position: relative;
+  top: 1475px;
 }
 
 h1.bug_graph {
-  position: absolute;
-  top: 3125px;
+  position: relative;
+  top: 1675px;
 }
 /* auto update section */
 h1.autoText {
@@ -230,10 +230,10 @@ input.endDate {
   <!-- what date(s) to display -->
   <div id="date" class="date">
     <form method="GET">
-      {% csrf_token %}
-      DISPLAY BETWEEN {{ start_date }} AND {{ end_date }}
+      <!--{% csrf_token %}
+      DISPLAY BETWEEN {{ start_date }} AND {{ end_date }}-->
     </form>
-    <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Submit" />
+    <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Display" />
   </div>
 
   <!-- title -->
@@ -265,7 +265,7 @@ input.endDate {
         <p class="description"> Steps: {{a.steps|linebreaks}} </p>
         <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
         <p class="description"> Comments: {{a.comments|linebreaks}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
         <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
         <form method="GET">
           {% csrf_token %}
@@ -285,15 +285,24 @@ input.endDate {
       <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="releaseFrontPage" scrolling="no"></iframe>
     </div>
 
-    <div class="releaseSection">
+    <div class"releaseSection">
       <h1 class="releaseText">Release Updates</h1>
       {% for a in release %}
       <div class="release_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.preconition}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
-        <a href="{% url 'a.link.user_link' %}" alt="no link provided">{{a.link.link_title}}</a>
+        <p class="description"> Date: {{a.pub_date}} </p>
+        <p class="description"> Author: {{a.author}} </p>
+        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        <form method="GET">
+          {% csrf_token %}
+          Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
+          <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
+        </form>
       </div>
       {% endfor %}
     </div>
@@ -307,19 +316,27 @@ input.endDate {
       <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="bugFrontPage" scrolling="no"></iframe>
     </div>
 
-    <div class="bugSection">
+    <div class"bugSection">
       <h1 class="bugText">Bug Updates</h1>
-      {% for a in bugs %}
+      {% for a in bug %}
       <div class="bug_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> date: {{a.pub_date}} </p>
-        <p class="description"> description: {{a.preconditio}} </p>
-        <img src="{{a.upload.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img><br>
-        <a href="{{a.link.user_link}}" alt="no link provided">Link: {{a.link.link_title}}</a>
+        <p class="description"> Date: {{a.pub_date}} </p>
+        <p class="description"> Author: {{a.author}} </p>
+        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        <form method="GET">
+          {% csrf_token %}
+          Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
+          <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
+        </form>
       </div>
       {% endfor %}
     </div>
-  </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 

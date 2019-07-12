@@ -65,12 +65,13 @@ class AutomatedPage(models.Model):
     steps = models.TextField(blank=True)
     parameters = models.TextField(blank=True)
     comments = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='auto_images/', default='auto_images/', blank=True, null=True)
     link = models.ForeignKey(AutomatedLink, blank=True, null=True)
+    document_link = models.FileField(upload_to='auto_documents/', default='auto_documents/', blank=True, null=True)
     def get_document_url(self):
         if self.file:
             document_link = models.FileField(upload_to='auto_documents/', default='auto_documents/', blank=True, null=True)
-            return 'auto_documents/' + self.file.name
+        return 'auto_documents/' + self.file.name
     def __str__(self):
         return self.title
 
@@ -82,7 +83,7 @@ class ReleasePage(models.Model):
     steps = models.TextField(blank=True)
     parameters = models.TextField(blank=True)
     comments = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='release_images/', default='release_images/', blank=True, null=True)
     link = models.ForeignKey(ReleaseLink, blank=True, null=True)
     def get_document_url(self):
         if self.file:
@@ -99,7 +100,7 @@ class BugPage(models.Model):
     steps = models.TextField(blank=True)
     parameters = models.TextField(blank=True)
     comments = models.TextField(blank=True)
-    upload = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='bug_images/', default='bug_images/', blank=True, null=True)
     link = models.ForeignKey(BugLink, blank=True, null=True)
     def get_document_url(self):
         if self.file:
@@ -109,7 +110,7 @@ class BugPage(models.Model):
         return self.title
 
 class DisplayFrontImages(models.Model):
-    upload = models.ImageField(upload_to='web_images/', default='web_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='web_images/', default='web_images/', blank=True, null=True)
     title = models.CharField(max_length=1000, blank=True, null=True)
 
 # uploading Images
