@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 
 from django.shortcuts import render
-from tvision.models import AutomatedPage, ReleasePage, BugPage, StartDateForm, EndDateForm, DisplayFrontImages
+from tvision.models import AutomatedPage, ReleasePage, BugPage, StartDateForm, EndDateForm
 from django.shortcuts import get_object_or_404
 
 from django.views.generic import TemplateView
@@ -24,8 +24,6 @@ def home(request):
         startDate = request.GET.get('start_date')
         endDate = request.GET.get('end_date')
 
-        display_main = DisplayFrontImages.objects.all()
-
         if startDate and endDate:
             automated_data = AutomatedPage.objects.filter(pub_date__range=[startDate,endDate])
             release_data = ReleasePage.objects.filter(pub_date__range=[startDate,endDate])
@@ -40,19 +38,12 @@ def home(request):
             'release' : release_data,
             'bug' : bug_data,
             'start_date' : StartDateForm,
-            'end_date' : EndDateForm,
-            'main' : display_main
+            'end_date' : EndDateForm
         }
 
         return render(request, "home.html", context)
 
 # allowing user to upload image
-def upload_pic(request):
-    auto_page = get_object_or_404(AutomatedPage, pk=1)
-    main_images = get_object_or_404(DisplayFrontImages, pk=1)
-    #main_images = DisplayFrontImages.objects.get(id=pk)
-    return render(request, 'home.html', context={'auto':auto_page, 'main':main_images})
-
 def upload_file(request):
     if request.method == 'POST':
         uploaded_file = request.FILES['document']

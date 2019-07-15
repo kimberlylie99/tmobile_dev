@@ -4,14 +4,13 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.urls import reverse
 
-from .models import AutomatedPage, ReleasePage, BugPage, DisplayFrontImages
+from .models import AutomatedPage, ReleasePage, BugPage
 from .models import AutomatedDocument, ReleaseDocument, BugDocument
 from .models import AutomatedLink, ReleaseLink, BugLink
 
 from django.utils.html import format_html
 
 # Register your models here.
-admin.site.register(DisplayFrontImages)
 admin.site.register(AutomatedPage)
 admin.site.register(ReleasePage)
 admin.site.register(BugPage)
@@ -26,7 +25,6 @@ class PersonalAdmin(AdminSite):
     site_header = "T|Vision Adminstration"
 
 admin_site = PersonalAdmin(name='myadmin')
-admin_site.register(DisplayFrontImages)
 admin_site.register(AutomatedPage)
 admin_site.register(ReleasePage)
 admin_site.register(BugPage)

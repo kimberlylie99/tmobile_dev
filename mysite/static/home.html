@@ -9,6 +9,7 @@
   <script src="{% static 'animation.js' %}"></script>
 
 <style>
+
 h1 {
   color: rgb(0,0,0);
   font-size: 100px;
@@ -84,7 +85,7 @@ h1.releaseText {
 
 div.release_description {
   position: relative;
-  top: 80px;
+  top: 1150px;
   left: 30px;
 }
 
@@ -132,7 +133,7 @@ p.range_word {
 .homeSubmit {
   position: absolute;
   top: 2px;
-  left: 630px;
+  left: 270px;
 }
 
 /* date */
@@ -233,7 +234,7 @@ input.endDate {
       <!--{% csrf_token %}
       DISPLAY BETWEEN {{ start_date }} AND {{ end_date }}-->
     </form>
-    <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Display" />
+    <input class="homeSubmit" onclick="pageScroll()" type="submit" value="Click to Display Data" />
   </div>
 
   <!-- title -->
@@ -259,19 +260,40 @@ input.endDate {
       {% for a in auto %}
       <div class="auto_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> Date: {{a.pub_date}} </p>
-        <p class="description"> Author: {{a.author}} </p>
-        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
-        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
-        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
-        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
-        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
-        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        {% if a.pub_date is not null %}
+          <p class="description"> Date: {{a.pub_date}} </p>
+        {% endif %}
+        {% if a.author is not null %}
+          <p class="description"> Author: {{a.author}} </p>
+        {% endif %}
+        {% if a.precondition is not null %}
+          <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        {% endif %}
+        {% if a.steps is not null %}
+          <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        {% endif %}
+        {% if a.parameters is not null %}
+          <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        {% endif %}
+        {% if a.expected_results is not null %}
+          <p class="description"> Expected Results: {{a.expected_results|linebreaks}} </p>
+        {% endif %}
+        {% if a.comments is not null %}
+          <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        {% endif %}
+        {% if a.image.url is not null %}
+          <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        {% endif %}
+        {% if a.link.user_link is not null %}
+          <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        {% endif %}
+        {% if a.document.get_document_url is not null %}
         <form method="GET">
           {% csrf_token %}
           Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
           <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
         </form>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -282,7 +304,7 @@ input.endDate {
       <!--{% for a in main %}
         <img src="{{a.upload.url}}"  alt="no image provided" onerror="this.style.display='none'" height="300"></img>
       {% endfor %}-->
-      <iframe src="https://ssinfy.testrail.net/index.php?/runs/view/2521&group_by=cases:section_id&group_order=asc" id="releaseFrontPage" scrolling="no"></iframe>
+      <iframe src="https://ssinfy.testrail.net/index.php?/milestones/view/382" id="releaseFrontPage" scrolling="no"></iframe>
     </div>
 
     <div class"releaseSection">
@@ -290,19 +312,41 @@ input.endDate {
       {% for a in release %}
       <div class="release_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> Date: {{a.pub_date}} </p>
-        <p class="description"> Author: {{a.author}} </p>
-        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
-        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
-        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
-        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
-        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
-        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        <p class="description"> [Test Suite: {{a.test_suite}}] </p>
+        {% if a.pub_date is not null %}
+          <p class="description"> Date: {{a.pub_date}} </p>
+        {% endif %}
+        {% if a.author is not null %}
+          <p class="description"> Author: {{a.author}} </p>
+        {% endif %}
+        {% if a.precondition is not null %}
+          <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        {% endif %}
+        {% if a.steps is not null %}
+          <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        {% endif %}
+        {% if a.parameters is not null %}
+          <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        {% endif %}
+        {% if a.expected_results is not null %}
+          <p class="description"> Expected Results: {{a.expected_results|linebreaks}} </p>
+        {% endif %}
+        {% if a.comments is not null %}
+          <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        {% endif %}
+        {% if a.image.url is not null %}
+          <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        {% endif %}
+        {% if a.link.user_link is not null %}
+          <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        {% endif %}
+        {% if a.document.get_document_url is not null %}
         <form method="GET">
           {% csrf_token %}
           Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
           <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
         </form>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -321,19 +365,40 @@ input.endDate {
       {% for a in bug %}
       <div class="bug_description">
         <p class="title"> {{a.title}} </p>
-        <p class="description"> Date: {{a.pub_date}} </p>
-        <p class="description"> Author: {{a.author}} </p>
-        <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
-        <p class="description"> Steps: {{a.steps|linebreaks}} </p>
-        <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
-        <p class="description"> Comments: {{a.comments|linebreaks}} </p>
-        <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
-        <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        {% if a.pub_date is not null %}
+          <p class="description"> Date: {{a.pub_date}} </p>
+        {% endif %}
+        {% if a.author is not null %}
+          <p class="description"> Author: {{a.author}} </p>
+        {% endif %}
+        {% if a.precondition is not null %}
+          <p class="description"> Precondition: {{a.precondition|linebreaks}} </p>
+        {% endif %}
+        {% if a.steps is not null %}
+          <p class="description"> Steps: {{a.steps|linebreaks}} </p>
+        {% endif %}
+        {% if a.parameters is not null %}
+          <p class="description"> Parameters: {{a.parameters|linebreaks}} </p>
+        {% endif %}
+        {% if a.expected_results is not null %}
+          <p class="description"> Expected Results: {{a.expected_results|linebreaks}} </p>
+        {% endif %}
+        {% if a.comments is not null %}
+          <p class="description"> Comments: {{a.comments|linebreaks}} </p>
+        {% endif %}
+        {% if a.image.url is not null %}
+          <img src="{{a.image.url}}" alt="no image provided" onerror="this.style.display='none'" height="300"></img>
+        {% endif %}
+        {% if a.link.user_link is not null %}
+          <h4> Attached URL: <a href="{{a.link.user_link}}" target="_blank" alt="no link provided">{{a.link.link_title}}</a></h4>
+        {% endif %}
+        {% if a.document.get_document_url is not null %}
         <form method="GET">
           {% csrf_token %}
           Attached document: <a href="{{ a.document.get_document_url }}" download>download</a>
           <!-- how to insert file:; https://stackoverflow.com/questions/22429076/show-file-link-in-template-->
         </form>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
