@@ -61,5 +61,3 @@ class AdminLink(admin.ModelAdmin):
     link_from_auto.allow_tags=True
     link_from_release.allow_tags=True
     link_from_bug.allow_tags=True
-# username: admin
-# password: adminadmin
